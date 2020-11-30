@@ -1,36 +1,88 @@
 <template>
     <div>
-        <h1>Carros</h1>
-         <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Juego de memorama</h1>
+         <h1>Carros</h1>
+         <h1 class="text-center">Juego de 9x8</h1>
+
+         actual
+                <p>
+                    <span class="h5">Intentos: </span> {{intentos}}
+                    <span class="h5">Puntos:
+                        </span> {{aciertos}}
+                </p>
+       
+       
+                
+
+                <div class="container ">
+        <div class=" d-flex flex-row justify-content-center">
+
+            <div class="card mb-4 mt-4 p-4" style=" max-height:3000px; border-radius: 20px">
+                <div class=" d-flex flex-row justify-content-between mt-4">
+
+                  
+        <div class="">
+      <div v-for="(fila, indiceFila) in memorama" :key="indiceFila" class="row">
+            <div :key="indiceFila+''+indiceImagen" class="col" v-for="(imagen, indiceImagen) in fila">
+                <div class="distancia" >
+                    <img @click="voltear(indiceFila, indiceImagen)" :class="{'girar': imagen.mostrar }" :src=" (imagen.mostrar ? imagen.ruta :
+                            NOMBRE_IMAGEN_OCULTA )" id="tamaño" class="  img-fluid ">
+                </div>
+            </div>
+        </div>
+         </div>
+                  
+                </div>
+                <!--  <h5 class="card-title mt-4  d-flex flex-row justify-content-center ">Card title</h5> -->
+               
+
+                
+            </div>
+          
+            
+
+
+        </div>
+
+    </div>
+
+            
+            <!-- <div class="col-12">
+                <h1 class="text-center">Juego de 9x8</h1>
+
+               
                 <p>
                     <span class="h5">Intentos: </span> {{intentos}}
                     <span class="h5">Puntos:
                         </span> {{aciertos}}
 
                 </p>
-            </div>
-        </div>
-        <div v-for="(fila, indiceFila) in memorama" :key="indiceFila" class="row">
-            <div :key="indiceFila+''+indiceImagen" class="col-3" v-for="(imagen, indiceImagen) in fila">
-                <div class="mb-3">
+            </div> -->
+        
+ <!--     <div class="bg-danger">
+      <div v-for="(fila, indiceFila) in memorama" :key="indiceFila" class="row">
+            <div :key="indiceFila+''+indiceImagen" class="col" v-for="(imagen, indiceImagen) in fila">
+                <div class="mb-2" >
                     <img @click="voltear(indiceFila, indiceImagen)" :class="{'girar': imagen.mostrar}" :src="(imagen.mostrar ? imagen.ruta :
-                            NOMBRE_IMAGEN_OCULTA)" class="card-img-top img-fluid
+                            NOMBRE_IMAGEN_OCULTA)" height="100px" width="100px" class="card-img-top img-fluid
                             img-thumbnail">
                 </div>
             </div>
         </div>
+         </div> -->
+        
+        ----
     </div>
 </template>
+
 <script>
+
 
 
 const // Intentos máximos que tiene el jugador
     MAXIMOS_INTENTOS = 999,
-    COLUMNAS = 2, // Columnas del memorama
+    COLUMNAS = 8, // Columnas del memorama
     SEGUNDOS_ESPERA_VOLTEAR_IMAGEN = 1, // Por cuántos segundos mostrar ambas imágenes
-    NOMBRE_IMAGEN_OCULTA = "https://www.flaticon.es/svg/static/icons/svg/44/44091.svg" // La imagen que se muestra cuando la real está oculta
+    NOMBRE_IMAGEN_OCULTA = "https://www.flaticon.es/svg/static/icons/svg/44/44091.svg"
 export default {
 
     name : 'Carros',
@@ -40,9 +92,41 @@ export default {
             "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
             "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkCm1qMGErnoHwP7s2Sj36g-XsHDNyAqPnw&usqp=CAU",
-
-
-
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+             "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
+            "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkCm1qMGErnoHwP7s2Sj36g-XsHDNyAqPnw&usqp=CAU",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+                "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
+            "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkCm1qMGErnoHwP7s2Sj36g-XsHDNyAqPnw&usqp=CAU",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+             "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
+            "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkCm1qMGErnoHwP7s2Sj36g-XsHDNyAqPnw&usqp=CAU",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+           "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
+            "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkCm1qMGErnoHwP7s2Sj36g-XsHDNyAqPnw&usqp=CAU",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+             "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
+            "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
+             "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+            "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg",
+             "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
+            "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
+         
+        
         ],
         memorama: [],
         // Útiles para saber cuál fue la carta anteriormente seleccionada
@@ -233,3 +317,23 @@ export default {
     },
 }
 </script>
+
+<style >
+
+#tamaño{
+
+ width: 25px;
+ height: 50px;
+ max-width: 300px;
+ border-radius: 5px;
+  
+}
+.distancia{
+    
+margin-bottom: 10px
+
+    
+}
+
+
+</style>
