@@ -7,13 +7,13 @@ import SwalFire from '../views/SwalFire.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/home',
+        path: '/',
         name: 'Home',
         component: Home
     },
     {
 
-        path: '/',
+        path: '/carros',
         name: 'carros',
         component: Carros
     },

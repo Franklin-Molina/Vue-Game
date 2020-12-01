@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import LoadScript from 'vue-plugin-load-script';
+Vue.use(LoadScript);
 
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'

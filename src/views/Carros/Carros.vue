@@ -2,56 +2,48 @@
   <div class="bg-info">
     <div class="d-flex flex-row justify-content-center">
       <div
-        class="bg-info card  my-2 "
+        class="bg-info card my-2"
         style="tam max-height:100px; border-radius: 20px "
       >
         <div class="d-flex flex-row justify-content-between">
           <div class="">
             <h3 class="text-center">Carros</h3>
-           
+
             <p>
-              <span>Intentos: </span> {{ intentos }}
-              <span>Puntos: </span> {{ aciertos }}
+              <span>Intentos: </span> {{ intentos }} <span>Puntos: </span>
+              {{ aciertos }}
             </p>
           </div>
         </div>
       </div>
     </div>
     <div
-
-
       class="grid-block"
       style="background-image: url('https://image.freepik.com/vector-gratis/fondo-degradado-tonos-verdes_23-2148380476.jpg');no-repeat center top; width: 100%; height: 100%;   height: 100vh; background-size: cover; "
     >
-      <div class="d-flex flex-row justify-content-center">
+
+        
+      <div class="centrar bg-info col-sm-12 col-12 ">
         <div
-          class="bg-info card mb-4 mt-4 p-4"
-          style="tam max-height:3000px; border-radius: 20px"
+          v-for="(fila, indiceFila) in memorama"
+          :key="indiceFila"
+          class=" col-sm-12 row mx-2 bg-danger justify-content-around align-items-center"
+          id="prueba"
         >
-          <div class="d-flex flex-row justify-content-between ">
+          <div
+            :key="indiceFila + '' + indiceImagen"
+            id="post"
+            
+            v-for="(imagen, indiceImagen) in fila"
+          >
             <div class="">
-              <div
-                v-for="(fila, indiceFila) in memorama"
-                :key="indiceFila"
-                class="row"
-              >
-                <div
-                  :key="indiceFila + '' + indiceImagen"
-                 
-                  class="col p-1"
-                  v-for="(imagen, indiceImagen) in fila"
-                >
-                  <div class="distancia">
-                    <img
-                      @click="voltear(indiceFila, indiceImagen)"
-                      :class="{ girar: imagen.mostrar }"
-                      :src="imagen.mostrar ? imagen.ruta : NOMBRE_IMAGEN_OCULTA"
-                      id="tamaño"
-                      class="img-fluid"
-                    />
-                  </div>
-                </div>
-              </div>
+              <img
+                @click="voltear(indiceFila, indiceImagen)"
+                :class="{ girar: imagen.mostrar }"
+                :src="imagen.mostrar ? imagen.ruta : NOMBRE_IMAGEN_OCULTA"
+                id="tamaño"
+                class=""
+              />
             </div>
           </div>
         </div>
@@ -337,20 +329,19 @@ export default {
   height: 50px;
   max-width: 300px;
   border-radius: 5px;
-  padding-right: 0;
 }
 .distancia {
-  margin-bottom: 10px;
+  margin-bottom: 1px;
+  margin: 0px;
 }
-
-.tam {
-  width: 500px;
-  background: red;
+#post {
+  padding: 3px;
 }
-
-#ditanciadere {
-  padding: 1px;
+.centrar{
+   position :relative !important; 
+  
 }
-.xd {
+body {
+  overflow: hidden;
 }
 </style>

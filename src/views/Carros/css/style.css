@@ -5,7 +5,6 @@ img.card-img-top {
 
 img.card-img-top.girar {
     animation: fadein 2s;
-    width: 200px;
 }
 
 @keyframes fadein {
@@ -14,13 +13,5 @@ img.card-img-top.girar {
     }
     to {
         opacity: 1;
-    }
-}
-
-@media all and (max-width: 600px) {
-    div {
-        width: 100%;
-        height: auto;
-        margin-left: 10px;
     }
 }
