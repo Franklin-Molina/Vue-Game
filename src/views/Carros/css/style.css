@@ -17,7 +17,10 @@ img.card-img-top.girar {
     }
 }
 
-body {
-    /*Para la barra inferior fija*/
-    padding-bottom: 70px;
+@media all and (max-width: 600px) {
+    div {
+        width: 100%;
+        height: auto;
+        margin-left: 10px;
+    }
 }
