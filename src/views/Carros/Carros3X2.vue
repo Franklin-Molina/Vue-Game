@@ -5,10 +5,11 @@
         <div class="d-flex flex-row justify-content-between">
           <div class="">
             <h3 class="text-center">Carros</h3>
-          <p> Tiempo: {{ formatearTiempo() }}		</p>
+          <p> 		</p>
             <p>
               <span>Intentos: </span> {{ intentos }} <span>Puntos: </span>
               {{ aciertos }}
+              Tiempo: {{ formatearTiempo() }}
             </p>
           </div>
         </div>
@@ -91,9 +92,6 @@ function formatearTiempoDesdeSegundos(seg) {
 //Cronometro
 
 
-
-
-
 const // Intentos máximos que tiene el jugador
   MAXIMOS_INTENTOS = 999,
   COLUMNAS = 2, // Columnas del memorama
@@ -109,7 +107,7 @@ export default {
     imagenes: [
       "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
       "https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkCm1qMGErnoHwP7s2Sj36g-XsHDNyAqPnw&usqp=CAU",
+       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkCm1qMGErnoHwP7s2Sj36g-XsHDNyAqPnw&usqp=CAU", 
     ],
     memorama: [],
     // Útiles para saber cuál fue la carta anteriormente seleccionada
