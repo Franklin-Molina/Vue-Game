@@ -8,7 +8,10 @@ import TamCarro from '../views/Carros/Tam.vue'
 import Frutas from '../views/Frutas/Frutas.vue'
 import Aviones from '../views/Aviones/Aviones.vue'
 import Anime from '../views/Anime/Anime.vue'
+import Prueba from '../views/Anime/Prueba.vue'
+
 import Juegos from '../views/Juegos/Juegos.vue'
+
 
 
 import Carros9X8 from '../views/Carros/Carros9X8.vue'
@@ -115,6 +118,12 @@ const routes = [{
 
     },
 
+    {
+        path: '/pruebax',
+        name: 'prueba',
+        component: Prueba
+
+    },
 
 
 ]

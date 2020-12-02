@@ -5,7 +5,7 @@
         <div class="d-flex flex-row justify-content-between">
           <div class="">
             <h3 class="text-center">Carros</h3>
-
+          <p> Tiempo: {{ formatearTiempo() }}		</p>
             <p>
               <span>Intentos: </span> {{ intentos }} <span>Puntos: </span>
               {{ aciertos }}
@@ -47,37 +47,53 @@
             </div>
           </div>
         </div>
-        <!--  </div> -->
+      
       </div>
     </div>
-
-    <!-- <div class="col-12">
-                <h1 class="text-center">Juego de 9x8</h1>
-
-               
-                <p>
-                    <span class="h5">Intentos: </span> {{intentos}}
-                    <span class="h5">Puntos:
-                        </span> {{aciertos}}
-
-                </p>
-            </div> -->
-
-    <!--     <div class="bg-danger">
-      <div v-for="(fila, indiceFila) in memorama" :key="indiceFila" class="row">
-            <div :key="indiceFila+''+indiceImagen" class="col" v-for="(imagen, indiceImagen) in fila">
-                <div class="mb-2" >
-                    <img @click="voltear(indiceFila, indiceImagen)" :class="{'girar': imagen.mostrar}" :src="(imagen.mostrar ? imagen.ruta :
-                            NOMBRE_IMAGEN_OCULTA)" height="100px" width="100px" class="card-img-top img-fluid
-                            img-thumbnail">
-                </div>
-            </div>
-        </div>
-         </div> -->
   </div>
 </template>
 
 <script>
+
+
+//Cronometro
+function pad(str, length, character) {
+	var str = '' + str;
+	while (str.length < length) {
+		/* console.log('pad' + character); */
+		str = character + str;
+	}
+	return str;
+};
+
+function formatearTiempoDesdeSegundos(seg) {
+	var str = '';
+	var hora = null;
+	var minuto = null;
+	
+	hora = Math.floor(seg / 60.0 / 60.0);
+	str += pad(hora, 2, '0');
+
+	minuto = Math.floor(seg / 60.0);
+	while (minuto >= 60) {
+		minuto -=60;
+	}
+	str += ':' + pad(minuto, 2, '0');
+
+	seg = Math.floor(seg);
+	while (seg >= 60) {
+		seg -=60;
+	}
+	str += ':' + pad(seg, 2, '0');
+	return str;
+
+};
+//Cronometro
+
+
+
+
+
 const // Intentos máximos que tiene el jugador
   MAXIMOS_INTENTOS = 999,
   COLUMNAS = 2, // Columnas del memorama
@@ -87,6 +103,8 @@ const // Intentos máximos que tiene el jugador
 export default {
   name: "Carros",
   data: () => ({
+
+    tiempo:0,
     // La ruta de las imágenes. Puede ser relativa o absoluta
     imagenes: [
       "https://img.autocosmos.com/noticias/fotosprinc/NAZ_b65480612b9249c0885a3ec88c5641e1.jpg",
@@ -101,13 +119,39 @@ export default {
     },
     NOMBRE_IMAGEN_OCULTA: NOMBRE_IMAGEN_OCULTA,
     MAXIMOS_INTENTOS: "",
-    intentos: 0,
+    intentos: 1,
     aciertos: 0,
     esperandoTimeout: false,
   }),
   methods: {
-    // Método que muestra la alerta indicando que el jugador ha perdido; después
-    // de mostrarla, se reinicia el juego
+    //cronometro
+ 
+			reiniciarTiempo: function(event) {
+			    event.preventDefault();
+      			//this.tiempo = null;
+				this.tiempo = 0;
+				//this.guardarEnLocalStorage();
+			},
+			formatearTiempo: function () {
+				return formatearTiempoDesdeSegundos(this.tiempo);
+			},
+		
+			contarSegundos: function() {
+				var self = this;
+				setInterval(function() {
+					if (self.tiempo !== null) {
+						self.tiempo++;
+					
+					
+					}
+				}, 1000);
+			},
+
+
+
+
+
+
     indicarFracaso() {
       Swal.fire({
         title: "Perdiste",
@@ -123,6 +167,7 @@ export default {
     indicarVictoria() {
       var resultado = this.aciertos;
       var intentos = this.intentos;
+      var tiempo = this.tiempo
       Swal.fire({
         title: "¡Ganaste!",
         html: `
@@ -130,6 +175,9 @@ export default {
                 <p class="h4">Muy bien hecho</p> Puntos:${resultado}
                 <br>
                 Intentos:${intentos}
+                <br>
+                 	
+                 Tiempo:${tiempo} Segundos
                 <br>
                 <a href="/">
 <img class="imagen" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Home_Icon.svg/768px-Home_Icon.svg.png"   alt="">
@@ -141,7 +189,9 @@ export default {
 
         allowOutsideClick: false,
         allowEscapeKey: false,
-      }).then(this.reiniciarJuego);
+      }).then(this.reiniciarJuego)
+        
+      
     },
     // Método que indica si el jugador ha ganado
     haGanado() {
@@ -235,6 +285,13 @@ export default {
       }
     },
     reiniciarJuego() {
+
+
+ event.preventDefault();
+      			//this.tiempo = null;
+				this.tiempo = 0;
+
+
       let memorama = [];
       this.imagenes.forEach((imagen, indice) => {
         let imagenDeMemorama = {
@@ -255,7 +312,7 @@ export default {
         memoramaDividido.push(memorama.slice(i, i + COLUMNAS));
       }
       // Reiniciar intentos
-      this.intentos = 0;
+      this.intentos = 1;
       this.aciertos = 0;
       // Asignar a instancia de Vue para que lo dibuje
       this.memorama = memoramaDividido;
@@ -299,6 +356,9 @@ export default {
   },
   mounted() {
     this.precargarImagenes();
+     
+      this.contarSegundos();
+      
   },
 };
 </script>
