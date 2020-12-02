@@ -1,8 +1,7 @@
 <template>
-  <div class="bg-info">
-    <div class="d-flex flex-row justify-content-center">
+  <div class="bg-info mx-0">
+    <div class="d-flex flex-row justify-content-center mx-0">
       <div
-        class="bg-info card my-2"
         style="tam max-height:100px; border-radius: 20px "
       >
         <div class="d-flex flex-row justify-content-between">
@@ -18,35 +17,40 @@
       </div>
     </div>
     <div
-      class="grid-block"
+      class="grid-block col-sm-md-12 "
       style="background-image: url('https://image.freepik.com/vector-gratis/fondo-degradado-tonos-verdes_23-2148380476.jpg');no-repeat center top; width: 100%; height: 100%;   height: 100vh; background-size: cover; "
     >
-
-        
-      <div class="centrar bg-info col-sm-12 col-12 ">
-        <div
-          v-for="(fila, indiceFila) in memorama"
-          :key="indiceFila"
-          class=" col-sm-12 row mx-2 bg-danger justify-content-around align-items-center"
-          id="prueba"
-        >
-          <div
-            :key="indiceFila + '' + indiceImagen"
-            id="post"
-            
-            v-for="(imagen, indiceImagen) in fila"
-          >
+      <div class="d-flex flex-row justify-content-center mx-my-0">
+      <!--   <div
+          class="bg-info mb-4 mt-4 p-4 col-sm-4"
+          style="tam max-height:3000px; border-radius: 20px"
+        > -->
+          <div class="d-flex flex-row justify-content-center mx-my-0">
             <div class="">
-              <img
-                @click="voltear(indiceFila, indiceImagen)"
-                :class="{ girar: imagen.mostrar }"
-                :src="imagen.mostrar ? imagen.ruta : NOMBRE_IMAGEN_OCULTA"
-                id="tamaño"
-                class=""
-              />
+              <div
+                v-for="(fila, indiceFila) in memorama"
+                :key="indiceFila"
+                class="row mx-0"
+              >
+                <div
+                  :key="indiceFila + '' + indiceImagen"
+                  class="col p-1 mx-my-0 space"
+                  v-for="(imagen, indiceImagen) in fila"
+                >
+                  <div class="distancia">
+                    <img
+                      @click="voltear(indiceFila, indiceImagen)"
+                      :class="{ girar: imagen.mostrar }"
+                      :src="imagen.mostrar ? imagen.ruta : NOMBRE_IMAGEN_OCULTA"
+                  
+                      class="target-image"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+       <!--  </div> -->
       </div>
     </div>
 
@@ -82,7 +86,7 @@ const // Intentos máximos que tiene el jugador
   COLUMNAS = 8, // Columnas del memorama
   SEGUNDOS_ESPERA_VOLTEAR_IMAGEN = 1, // Por cuántos segundos mostrar ambas imágenes
   NOMBRE_IMAGEN_OCULTA =
-    "https://www.flaticon.es/svg/static/icons/svg/44/44091.svg";
+    "https://assets.stickpng.com/images/5a4613eed099a2ad03f9c996.png";
 export default {
   name: "Carros",
   data: () => ({
@@ -324,24 +328,48 @@ export default {
 </script>
 
 <style >
-#tamaño {
-  width: 25px;
-  height: 50px;
-  max-width: 300px;
-  border-radius: 5px;
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
 }
+
 .distancia {
   margin-bottom: 1px;
-  margin: 0px;
+
 }
-#post {
-  padding: 3px;
+
+/* .tam {
+  width: 500px;
+  background: red;
+} */
+img.card-img-top.girar {
+    animation: fadein 2s;
 }
-.centrar{
-   position :relative !important; 
+ .target-image{
+  /* width: 85%; */
+  height: 60px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+} 
+
+#ditanciadere {
+  padding: 1px;
+}
+.tam2{
+  margin-right: 1px;
+}
+
+body{
+  overflow-y: hidden;
+}
+
+img {
+   width:100%;
+    max-width:400px;
   
-}
-body {
-  overflow: hidden;
 }
 </style>
