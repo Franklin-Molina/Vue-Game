@@ -4,7 +4,7 @@
       <div class="bloques col-6">
         <div class="button-container-2">
           <span class="mas">Let's Go</span>
-          <a href="/tamCarro">
+          <a href="/carros3x2">
             <button class="">
               <div>3 X 2</div>
             </button>
@@ -13,8 +13,8 @@
       </div>
       <div class="bloques col-6">
         <div class="button-container-2">
-          <span class="mas">MASK2</span>
-          <a href="/tamCarro">
+          <span class="mas">Let's Go</span>
+          <a href="/carros4x3">
             <button class="">
               <div>4 X 3</div>
             </button>
@@ -24,8 +24,8 @@
       <br />
       <div class="bloques col-6">
         <div class="button-container-2">
-          <span class="mas">MASK2</span>
-           <a href="/tamCarro">
+          <span class="mas">Let's Go</span>
+           <a href="/carros5x4">
             <button class="">
               <div>5 X 4</div>
             </button>
@@ -34,8 +34,8 @@
       </div>
       <div class="bloques col-6">
         <div class="button-container-2">
-          <span class="mas">MASK2</span>
-         <a href="/tamCarro">
+          <span class="mas">Let's Go</span>
+         <a href="/carros6x5">
             <button class="">
               <div>6 X 5</div>
             </button>
@@ -44,8 +44,8 @@
       </div>
       <div class="bloques col-6">
         <div class="button-container-2">
-          <span class="mas">MASK2</span>
-           <a href="/tamCarro">
+          <span class="mas">Let's Go</span>
+           <a href="/carros8x7">
             <button class="">
               <div>8 X 7</div>
             </button>
@@ -54,8 +54,8 @@
       </div>
       <div class="bloques col-6">
         <div class="button-container-2">
-          <span class="mas">MASK2</span>
-         <a href="/carros">
+          <span class="mas">Let's Go</span>
+         <a href="/carros9x8">
             <button class="">
               <div>9 X 8</div>
             </button>
