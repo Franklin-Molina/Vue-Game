@@ -140,7 +140,7 @@ export default {
                 <br>
                 Intentos:${intentos}
                 <br>
-                <a href="/carros">
+                <a href="/">
 <img class="imagen" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Home_Icon.svg/768px-Home_Icon.svg.png"   alt="">
 
 </a>
